@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  <link rel="stylesheet" href="libs/css/bootstrap.min.css">
+
+  <script src="libs/js/jquery-3.2.1.min.js"></script>
+  <script src="libs/js/bootstrap.min.js"></script>
+
+  <title>SO- Nauka</title>
+  <style>
+    .buttonsTd {
+      width: 150px;
+    }
+    .btn-yes.answered {
+      background-color: #a1e1a1;
+    }
+    .btn-no.answered {
+      background-color: #f4abab;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="row" style="margin-top: 50px;">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Aktualne pytanie</h3>
+        </div>
+        <div class="panel-body">
+          <h4 id="description">Description here...</h4>
+          <table class="table table-striped">
+            <tbody id="questionsTable">
+              <tr>
+                <td>
+                  Question 1.
+                </td>
+                <td class="buttonsTd">
+                  <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-default btn-yes">TAK</button>
+                    <button type="button" class="btn btn-default btn-no">NIE</button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <button id="btn-prev" type="button" class="btn btn-default">Poprzednie</button>
+
+          <div class="btn-group pull-right" role="group">
+            <button id="btn-rand" type="button" class="btn btn-default"><span class="glyphicon glyphicon-random" aria-hidden="true"></span></button>
+            <button id="btn-next" type="button" class="btn btn-default">Następne</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+<script>
+  $('#hello').text("Hi!");
+
+  var questionsData = [];
+  var currentId = 0;
+  var maxId = 0;
+
+  $.getJSON("data.json", function(json) {
+      questionsData = json.data;
+      maxId = questionsData.length - 1;
+
+      showQuestion(currentId);
+  });
+
+
+  $('#btn-prev').click(function() {
+    if(currentId > 0) {
+      currentId--;
+      showQuestion(currentId);
+    }
+  })
+
+  $('#btn-rand').click(function() {
+    currentId = Math.floor(Math.random() * (maxId + 1));
+    showQuestion(currentId);
+  })
+
+  $('#btn-next').click(function() {
+    if(currentId < maxId) {
+      currentId++;
+      showQuestion(currentId);
+    }
+  })
+
+  function showQuestion(arrayId) {
+    var question = questionsData[arrayId];
+
+    $('#description').text(question.description);
+
+    var questionsTable = $('#questionsTable');
+    questionsTable.empty();
+
+    question.questions.forEach(function(q) {
+
+
+      if(q.answer) {
+              var btnYes = '<button type="button" class="btn btn-default btn-yes good-answer">TAK</button>';
+              var btnNo = '<button type="button" class="btn btn-default btn-no">NIE</button>';
+      } else {
+              var btnYes = '<button type="button" class="btn btn-default btn-yes">TAK</button>';
+              var btnNo = '<button type="button" class="btn btn-default btn-no good-answer">NIE</button>';
+      }
+
+      var buttonsTd = '<td class="buttonsTd"><div class="btn-group pull-right" role="group">' + btnYes + btnNo + '</div></td>';
+      var element = "<tr><td>" + q.question + "</td>" + buttonsTd +"</tr>";
+
+      questionsTable.append(element);
+    })
+
+    questionsTable.find('button').click(onAnswer);
+  }
+
+  function onAnswer() {
+    if($(this).hasClass('good-answer')) {
+      $(this).addClass("answered");
+    } else {
+      console.log("Bad!");
+    }
+  }
+
+</script>
+
+</html>

@@ -1,0 +1,25 @@
+{
+  "data": [{
+        "id": 1,
+        "description": "W hierarchicznym systemie plików",
+        "questions": [{
+          "question": "występuje wiele katalogów",
+          "answer": true
+        }, {
+          "question": "występuje jeden katalog główny",
+          "answer": true
+        }, {
+          "question": "występuje wiele katalogów głównych",
+          "answer": false
+        }]
+      }, {
+        "id": 2,
+        "description": "Bloki alokacji (klastry) w systemie plików",
+        "questions": [{
+          "question": "Dobierane sa tak, aby zminimalizowac fragmentacje zewnetrzna",
+          "answer": false
+        }]
+      }
+    ]
+
+}
