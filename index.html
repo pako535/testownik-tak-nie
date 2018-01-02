@@ -33,7 +33,7 @@
 <body>
 
   <div class="row" style="margin-top: 50px;">
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-md-8 col-md-offset-1">
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title">Aktualne pytanie nr. <span id="currentId"></span> (<span id="arrayId"></span>/<span id="maxId"></span>)</h3>
@@ -63,6 +63,38 @@
             <button id="btn-next" type="button" class="btn btn-default">Następne</button>
           </div>
 
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Dobra passa</h3>
+        </div>
+        <div class="panel-body" style="text-align:center;">
+          <h2 id="correctInARow">
+            0
+          </h2>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Poprawne</h3>
+        </div>
+        <div class="panel-body" style="text-align:center;">
+          <h2 id="correctTotal">
+            0
+          </h2>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Złe</h3>
+        </div>
+        <div class="panel-body" style="text-align:center;">
+          <h2 id="wrongTotal">
+            0
+          </h2>
         </div>
       </div>
     </div>
@@ -138,8 +170,12 @@
   function onAnswer() {
     if ($(this).hasClass('good-answer')) {
       $(this).addClass("answered");
+      $('#correctInARow').text(parseInt($('#correctInARow').text()) + 1);
+      $('#correctTotal').text(parseInt($('#correctTotal').text()) + 1);
     } else {
       console.log("Bad!");
+      $('#correctInARow').text(0);
+      $('#wrongTotal').text(parseInt($('#wrongTotal').text()) + 1);
       // blink on bad answered
       var toBlink = $(this).parents('tr'); // Save reference for better performance
       toBlink.addClass("blink");
