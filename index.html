@@ -21,6 +21,9 @@
     .btn-no.answered {
       background-color: #f4abab;
     }
+    .blink {
+      background-color: #f3c2c2 !important;
+    }
   </style>
 </head>
 
@@ -132,6 +135,12 @@
       $(this).addClass("answered");
     } else {
       console.log("Bad!");
+      // blink on bad answered
+      var toBlink = $(this).parents('tr'); // Save reference for better performance
+      toBlink.addClass("blink");
+      var backgroundInterval = setTimeout(function(){
+        toBlink.removeClass("blink");
+     },100)
     }
   }
 

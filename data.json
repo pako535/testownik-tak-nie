@@ -1,25 +1,267 @@
 {
-  "data": [{
+  "data": [
+      {
         "id": 1,
         "description": "W hierarchicznym systemie plików",
-        "questions": [{
-          "question": "występuje wiele katalogów",
-          "answer": true
-        }, {
-          "question": "występuje jeden katalog główny",
-          "answer": true
-        }, {
-          "question": "występuje wiele katalogów głównych",
-          "answer": false
-        }]
-      }, {
+        "questions": [
+          {
+            "question": "występuje wiele katalogów",
+            "answer": true
+          },
+          {
+            "question": "występuje jeden katalog główny",
+            "answer": true
+          },
+          {
+            "question": "występuje wiele katalogów głównych",
+            "answer": false
+          },
+          {
+            "question": "użytkownikom przypisane są priorytety dostępu do plików",
+            "answer": false
+          },
+          {
+            "question": "Użytkownicy maja dostep tylko do swoich plików",
+            "answer": false
+          },
+          {
+            "question": "Okresla sie sciezki dostepu do plików",
+            "answer": true
+          },
+          {
+            "question": "Okreslona jest dokładnie jedna sciezka bezwzgledna do pliku",
+            "answer": true
+          },
+          {
+            "question": "Wystepuja sciezki wzgledne i bezwzgledne dostepu do plików",
+            "answer": true
+          },
+          {
+            "question": "Moga wystepowac wielokrotne dowiazania twarde do pliku",
+            "answer": true
+          }
+        ]
+      },
+      {
         "id": 2,
         "description": "Bloki alokacji (klastry) w systemie plików",
-        "questions": [{
-          "question": "Dobierane sa tak, aby zminimalizowac fragmentacje zewnetrzna",
-          "answer": false
-        }]
+        "questions": [
+          {
+            "question": "Dobierane sa tak, aby zminimalizowac fragmentacje zewnetrzna",
+            "answer": false
+          },
+          {
+            "question": "Dobierane sa tak, aby zminimalizowac fragmentacje wewnetrzna",
+            "answer": true
+          },
+          {
+            "question": "Sa stałej wielkosci w całym systemie plików",
+            "answer": true
+          },
+          {
+            "question": "Sa zawsze wielkosci dwóch rekordów fizycznych (sektorów) na dysku",
+            "answer": false
+          },
+          {
+            "question": "Powinny byc jak najwieksze, aby było ich w systemie niewiele",
+            "answer": false
+          },
+          {
+            "question": "Numerowane sa liczbami binarnymi stałej długości, co ogranicza ich liczbę",
+            "answer": true
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "description": "Sekwencyjny dostep do pliku",
+        "questions": [
+          {
+            "question": "Polega na czytaniu lub zapisie pliku rekord po rekordzie w stałej kolejnosci",
+            "answer": true
+          },
+          {
+            "question": "Pozwala na wystepowanie plików nieciagłych, z niezaalokowanymi dziurami",
+            "answer": false
+          },
+          {
+            "question": "Jest mozliwy tylko w plikach z rekordami stałej długosci",
+            "answer": false
+          },
+          {
+            "question": "Nie pozwala dopisywac rekordów na koniec istniejacego pliku",
+            "answer": false
+          },
+          {
+            "question": "Nie powinien byz uzywany - jest implementowany jedynie z przyczyn historycznych",
+            "answer": false
+          },
+          {
+            "question": "Pozwala czytac rekordy w dowolnej kolejnosci dzieki operacji lseek",
+            "answer": false
+          },
+          {
+            "question": "Wyklucza powstawanie “dziur” w plikach, w których nie ma przydzielonych bloków",
+            "answer": true
+          },
+          {
+            "question": "Ułatwia grupowanie operacji dyskowych przez system operacyjny",
+            "answer": true
+          },
+          {
+            "question": "Powinien byc uzywany jedynie przy operacjach na plikach specjalnych, odpowiadajacych urzadzeniom znakowym",
+            "answer": false
+          },
+          {
+            "question": "Szereguje dostep wielu procesów do pliku",
+            "answer": false
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "description": "Bezposredni==swobodny dostep do pliku",
+        "questions": [
+          {
+            "question": "Wymaga zmiany kolejnosci rekordów w pliku w celu optymalizacji czas dostepu",
+            "answer": false
+          },
+          {
+            "question": "Pozwala na wystepowanie plików nieciagłych, wewnatrz których moga wystapic niezaalokowane obszary",
+            "answer": true
+          },
+          {
+            "question": "Jest mozliwy tylko w plikach z rekordami stałej długosci",
+            "answer": true
+          },
+          {
+            "question": "Pozwala na wystepowanie plików nieciagłych, z niezaalokowanymi dziurami",
+            "answer": true
+          },
+          {
+            "question": "Pozwala czytac rekordy w dowolnej kolejnosci dzieki operacji lseek",
+            "answer": true
+          },
+          {
+            "question": "Pozwala na zapis fragmentów róznych plików do wspólnego bloku alokacji",
+            "answer": false
+          },
+          {
+            "question": "Szereguje dostep wielu procesów do pliku",
+            "answer": false
+          },
+          {
+            "question": "Blokuje równoczesny dostep wielu procesów do pliku",
+            "answer": false
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "description": "Nic tu nie ma",
+        "questions": []
+      },
+      {
+        "id": 6,
+        "description": "Przydział ciagły miejsca na dysku",
+        "questions": [
+          {
+            "question": "Jest algorytmem optymalnym, nie dajacym sie zaimplementowac w praktyce",
+            "answer": false
+          },
+          {
+            "question": "Charakteryzuje sie fragmentacja zewnetrzna przestrzeni dysku",
+            "answer": true
+          },
+          {
+            "question": "Wymaga zapisu tablicy indeksowej na dysku",
+            "answer": false
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "description": "Przydział indeksowy miejsca na dysku",
+        "questions": [
+          {
+            "question": "Jest algorytmem optymalnym, nie dajacym sie zaimplementowac w praktyce",
+            "answer": false
+          },
+          {
+            "question": "Charakteryzuje sie fragmentacja zewnetrzna przestrzeni dysku",
+            "answer": false
+          },
+          {
+            "question": "Wymaga zapisu tablicy indeksowej na dysku",
+            "answer": true
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "description": "Przydział listowy miejsca na dysku",
+        "questions": [
+          {
+            "question": "Jest algorytmem optymalnym, nie dajacym sie zaimplementowac w praktyce",
+            "answer": false
+          },
+          {
+            "question": "Charakteryzuje sie brakiem fragmentacja wewnetrznej przestrzeni dysku",
+            "answer": false
+          },
+          {
+            "question": "Wymaga zapisu tablicy listowej na dysku",
+            "answer": false
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "description": "Planowanie krótkoterminowe",
+        "questions": [
+          {
+            "question": "Wymaga architektury wieloproces orowej",
+            "answer": false
+          },
+          {
+            "question": "Bezposrednio decyduje o wyborze procesów, które nalezy wczytac do pamieci",
+            "answer": false
+          },
+          {
+            "question": "Okresla procesy, które nalezy zablokowac",
+            "answer": false
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "description": "Planowanie srednioterminowe",
+        "questions": [
+          {
+            "question": "Wymaga architektury wieloprocesorowej",
+            "answer": false
+          },
+          {
+            "question": "Bezposrednio decyduje o wyborze procesów, które nalezy wczytac do pamieci",
+            "answer": true
+          },
+          {
+            "question": "Okresla procesy, które nalezy zablokowac",
+            "answer": true
+          },
+          {
+            "question": "Polega na wyborze procesu, który ma zostać usunięty z pamięci op",
+            "answer": true
+          },
+          {
+            "question": "To wybór zadania, które w pierwszej kolejności powinno zostać wczytane do pamieci op (nie znana odp, dalem TAK)",
+            "answer": true
+          },
+          {
+            "question": "Musi byc zaimplementowane w kazdym wieloprogramowym SO",
+            "answer": false
+          }
+        ]
       }
     ]
-
 }
