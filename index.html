@@ -170,6 +170,10 @@
 
   function onAnswer() {
     if ($(this).hasClass('good-answer')) {
+        if($(this).hasClass("answered")) {
+          // already answered
+          return;
+        }
       $(this).addClass("answered");
       $('#correctInARow').text(parseInt($('#correctInARow').text()) + 1);
       $('#correctTotal').text(parseInt($('#correctTotal').text()) + 1);
