@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  <script src="../libs/js/jquery-3.2.1.min.js"></script>
+
+  <title>Parse</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+
+
+  var jsonObject = {};
+
+  jsonObject.data = [];
+
+  var currentDataId = -1;
+
+
+  $.get("rawData.txt", function(data) {
+
+    var lines = data.split('\n');
+    for (var i = 0; i < lines.length; i++) {
+      var line = lines[i];
+
+      if (line.startsWith("+")) {
+        var innerQuestionElement = {};
+
+        var indexOfYes = line.indexOf("TAK");
+        var indexOfNo = line.indexOf("NIE");
+
+        if (indexOfYes != -1) {
+          // Answer = YES
+          innerQuestionElement.question = line.slice(line.indexOf('+') + 1, indexOfYes);
+          innerQuestionElement.answer = true;
+
+        } else if (indexOfNo != -1) {
+          // Answer = NO
+          innerQuestionElement.question = line.slice(line.indexOf('+') + 1, indexOfNo);
+          innerQuestionElement.answer = false;
+        } else {
+          console.log("There was no answer on question " + jsonObject.data[currentDataId].id);
+        }
+
+        jsonObject.data[currentDataId].questions.push(innerQuestionElement);
+
+      } else {
+        var id = line.slice(0, line.indexOf('.'));
+        var desc = line.slice(line.indexOf('.') + 1);
+
+        var questionElement = {};
+        questionElement.id = id;
+        questionElement.description = desc;
+        questionElement.questions = [];
+
+        jsonObject.data.push(questionElement);
+        currentDataId++;
+      }
+    }
+
+    console.log(jsonObject);
+
+    var jsonString = JSON.stringify(jsonObject);
+    function download(text, name, type) {
+      var a = document.createElement("a");
+      var file = new Blob([text], {type: type});
+      a.href = URL.createObjectURL(file);
+      a.download = name;
+      a.click();
+    }
+    download(jsonString, 'produced.json', 'text/plain');
+
+
+  });
+
+</script>
+
+</html>

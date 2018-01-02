@@ -1,0 +1,28 @@
+﻿1. W hierarchicznym systemie plików
++ występuje wiele katalogów TAK
++ występuje jeden katalog główny TAK
++ występuje wiele katalogów głównych NIE
++ użytkownikom przypisane są priorytety dostępu do plików NIE
++ Użytkownicy maja dostep tylko do swoich plików NIE
++ Okresla sie sciezki dostepu do plików TAK
++ Okreslona jest dokładnie jedna sciezka bezwzgledna do pliku TAK
++ Wystepuja sciezki wzgledne i bezwzgledne dostepu do plików TAK
++ Moga wystepowac wielokrotne dowiazania twarde do pliku TAK
+2. Bloki alokacji (klastry) w systemie plików
++ Dobierane sa tak, aby zminimalizowac fragmentacje zewnetrzna NIE
++ Dobierane sa tak, aby zminimalizowac fragmentacje wewnetrzna TAK
++ Sa stałej wielkosci w całym systemie plików TAK
++ Sa zawsze wielkosci dwóch rekordów fizycznych (sektorów) na dysku NIE
++ Powinny byc jak najwieksze, aby było ich w systemie niewiele NIE
++ Numerowane sa liczbami binarnymi stałej długości, co ogranicza ich liczbę TAK
+3. Sekwencyjny dostep do pliku
++ Polega na czytaniu lub zapisie pliku rekord po rekordzie w stałej kolejnosci TAK
++ Pozwala na wystepowanie plików nieciagłych, z niezaalokowanymi dziurami NIE
++ Jest mozliwy tylko w plikach z rekordami stałej długosci NIE
++ Nie pozwala dopisywac rekordów na koniec istniejacego pliku NIE
++ Nie powinien byz uzywany - jest implementowany jedynie z przyczyn historycznych NIE
++ Pozwala czytac rekordy w dowolnej kolejnosci dzieki operacji lseek NIE
++ Wyklucza powstawanie “dziur” w plikach, w których nie ma przydzielonych bloków TAK
++ Ułatwia grupowanie operacji dyskowych przez system operacyjny TAK
++ Powinien byc uzywany jedynie przy operacjach na plikach specjalnych, odpowiadajacych urzadzeniom znakowym NIE
++ Szereguje dostep wielu procesów do pliku NIE
