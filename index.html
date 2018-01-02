@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="libs/css/bootstrap.min.css">
 
   <script src="libs/js/jquery-3.2.1.min.js"></script>
@@ -26,10 +27,10 @@
 <body>
 
   <div class="row" style="margin-top: 50px;">
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-md-8 col-md-offset-2" style="padding-left: 25px;">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title">Aktualne pytanie</h3>
+          <h3 class="panel-title">Aktualne pytanie <span id="currentId"></span>/<span id="maxId"></span></h3>
         </div>
         <div class="panel-body">
           <h4 id="description">Description here...</h4>
@@ -72,6 +73,7 @@
   $.getJSON("data.json", function(json) {
       questionsData = json.data;
       maxId = questionsData.length - 1;
+      $('#maxId').text(maxId + 1);
 
       showQuestion(currentId);
   });
@@ -122,6 +124,7 @@
     })
 
     questionsTable.find('button').click(onAnswer);
+    $('#currentId').text(question.id);
   }
 
   function onAnswer() {
