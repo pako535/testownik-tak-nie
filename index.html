@@ -99,6 +99,14 @@
       </div>
     </div>
   </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="shuffleQuestions">
+    <label class="form-check-label" for="defaultCheck1">
+      Mieszaj kolejność pytań
+    </label>
+  </div>
+
 </div>
 
 </body>
@@ -146,6 +154,9 @@
     var questionsTable = $('#questionsTable');
     questionsTable.empty();
 
+    if($('#shuffleQuestions').is(':checked'))
+      question.questions = shuffle(question.questions);
+
     question.questions.forEach(function(q) {
 
 
@@ -166,6 +177,7 @@
     questionsTable.find('button').click(onAnswer);
     $('#arrayId').text(currentId);
     $('#currentId').text(question.id);
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
   }
 
   function onAnswer() {
